@@ -1,0 +1,32 @@
+# ESTE DOCKER CREA UNA BASE DE DATOS POSTGRES Y UNA APLICACION PGADMIN PARA ADMINISTRAR LA BASE DE DATOS
+
+# ES IMPORTANTE TENER 2 CARPETAS EN EL MISMO DIRECTORIO DONDE SE ENCUENTRA ESTE ARCHIVO CON LOS NOMBRES _db_data Y _pgadmin_data DONDE SE GUARDARAN LOS DATOS DE LA BASE DE DATOS Y DE PGADMIN RESPECTIVAMENTE
+
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ecommerceadmin
+      POSTGRES_PASSWORD: ecommerceadmin
+      POSTGRES_DB: ecommerce
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 5050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ecommerceadmin@ecommerceadmin.com
+      PGADMIN_DEFAULT_PASSWORD: ecommerceadmin
+    volumes:
+      - ./_pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  db_data:
+  pgadmin_data:

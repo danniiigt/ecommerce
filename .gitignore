@@ -33,3 +33,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# db files
+_db_data
+_pgadmin_data
+
+# enviroment variables
+.env
+.env.local
