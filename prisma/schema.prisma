@@ -37,14 +37,11 @@ model Session {
 model User {
     id            String    @id @default(cuid())
     name          String?
-    businessName  String?
     email         String?   @unique
     emailVerified DateTime?
     password      String?
     image         String?
     role          String    @default("USER")
-    saldo         Decimal   @default(0)
-    paypalId      String?
     activo        Boolean   @default(true)
     accounts      Account[]
     sessions      Session[]
